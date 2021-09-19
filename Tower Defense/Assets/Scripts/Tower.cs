@@ -7,6 +7,12 @@ public class Tower : MonoBehaviour
     [SerializeField] private SpriteRenderer _towerPlace;
     [SerializeField] private SpriteRenderer _towerHead;
 
+    //Tower Health
+    [SerializeField] private int _maxHealth = 1;
+    [SerializeField] private float _moveSpeed = 1f;
+    [SerializeField] private SpriteRenderer _healthBar;
+    [SerializeField] private SpriteRenderer _healthFill;
+
     // Tower Properties
     [SerializeField] private int _shootPower = 1;
     [SerializeField] private float _shootDistance = 1f;
@@ -16,9 +22,11 @@ public class Tower : MonoBehaviour
 
     [SerializeField] private Bullet _bulletPrefab;
 
+    public bool IsPlaced { get; private set; }
     private float _runningShootDelay;
     private Enemy _targetEnemy;
     private Quaternion _targetRotation;
+    private int _currentHealth;
 
     public Vector2? PlacePosition { get; private set; }
 
@@ -108,6 +116,7 @@ public class Tower : MonoBehaviour
     public void LockPlacement()
     {
         transform.position = (Vector2)PlacePosition;
+        IsPlaced = true;
     }
 
     // Mengubah order in layer pada tower yang sedang di drag

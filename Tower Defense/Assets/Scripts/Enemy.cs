@@ -7,6 +7,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] private SpriteRenderer _healthBar;
     [SerializeField] private SpriteRenderer _healthFill;
 
+    // Tower Properties
+    [SerializeField] private int _shootPower = 1;
+    [SerializeField] private float _shootDistance = 1f;
+    [SerializeField] private float _shootDelay = 5f;
+    [SerializeField] private float _bulletSpeed = 1f;
+    [SerializeField] private float _bulletSplashRadius = 0f;
+
     private int _currentHealth;
 
     public Vector3 TargetPosition { get; private set; }
